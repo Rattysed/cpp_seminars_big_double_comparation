@@ -3,9 +3,6 @@
 #include <algorithm>
 
 class Solver {
- private:
-  std::string number_1_;
-  std::string number_2_;
  public:
   Solver() {
     std::cin >> number_1_ >> number_2_;
@@ -39,19 +36,22 @@ class Solver {
       }
     }
 
-    if (answer != '='){
+    if (answer != '=') {
       return answer;
     }
 
     std::string& with_tail = (number_1_.length() > number_2_.length()) ? number_1_ : number_2_;
     char sign = (number_1_.length() > number_2_.length()) ? '>' : '<';
-    for (; i < std::max(number_1_.length(), number_2_.length()); ++i){
-      if (with_tail[i] != '0'){
+    for (; i < std::max(number_1_.length(), number_2_.length()); ++i) {
+      if (with_tail[i] != '0') {
         return sign;
       }
     }
     return '=';
   }
+ private:
+  std::string number_1_;
+  std::string number_2_;
 };
 
 int main() {
